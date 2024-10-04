@@ -2,11 +2,11 @@ import argparse
 from pypdf import PdfReader
 import os
 import sqlite3
-from project0.creating_database import createdb
+from creating_database import createdb
 from extractingincidents import extracting_rows 
 from extractingincidents import clean_data 
 from fetchingincidents import fetchincidents
-from project0.populatedb import populatedb
+from populatedb import populatedb
 
 def main(url):
     #Download data
