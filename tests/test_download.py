@@ -1,14 +1,34 @@
 import sys
 import os
+import sqlite3
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from project0.extractingincidents import clean_data
 from project0.extractingincidents import extracting_rows
+from project0.creating_database import createdb
+from project0 import populatedb
 def test_clean_data():
     test_line = ['                                                                                                                        Daily Incident Summary (Public)', '            Date / Time                           Incident Number                                                        Location                                                                                       Nature                                                       Incident ORI', '9/25/2024 0:03                                2024-00069985                        1186 E ROCK CREEK RD                                                                        Traffic Stop                                                                                   OK0140200']
     required_output = [['9/25/2024 0:03', '2024-00069985', '1186 E ROCK CREEK RD', 'Traffic Stop', 'OK0140200']]
     our_output = clean_data(test_line)
     assert our_output == required_output
+
+def test_creating_database():
+    db = createdb()
+    assert isinstance(db, sqlite3.Connection)
+
+# def test_populatedb():
+#     test_data = ['9/20/2024 0:18', '2024-00014294', '2841 CLASSEN BLVD', 'Fire Alarm', '14005']
+#     con = createdb()
+#     populatedb(con, test_data)
+#     cur = con.cursor()
+#     data = cur.execute("SELECT COUNT(*) FROM incidents;").fetchall()
+#     count = data[0]
+
+#     assert count == 1
+
+    
+
 
 
 def test_extracting_rows():
