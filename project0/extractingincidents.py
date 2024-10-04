@@ -23,7 +23,9 @@ def clean_data(cleaning_list):
     for row in cleaning_list:
         if(row.startswith("    ")): 
             continue
-        cleaned_row = [e.strip() for e in re.split(r"\s{4,}", row.strip())]
+        row = row.strip()  # Remove leading and trailing spaces from the row
+        split_row = re.split(r"\s{4,}", row)  # Split the row into parts wherever there are 4 or more spaces
+        cleaned_row = [part.strip() for part in split_row]  # Strip leading and trailing spaces from each part      
         # print(cleaned_row)
         cleaned_row_new = []
         if(len(cleaned_row) == 5):
