@@ -15,9 +15,9 @@ def main(url):
     pdf_path = os.getcwd()
     required_path = os.path.join(pdf_path,"incident_report.pdf")
     extracted_rows_list = extracting_rows(required_path)
-    print(extracted_rows_list)
+    # print(extracted_rows_list)
     cleaned_data_to_use = clean_data(extracted_rows_list)
-    print(cleaned_data_to_use)
+    # print(cleaned_data_to_use)
 
 
     con = createdb()

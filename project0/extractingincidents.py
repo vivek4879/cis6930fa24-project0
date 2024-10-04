@@ -25,21 +25,19 @@ def clean_data(cleaning_list):
             continue
         cleaned_row = [e.strip() for e in re.split(r"\s{4,}", row.strip())]
         # print(cleaned_row)
-        # cleaned_row_new = ''
-        # if(len(cleaned_row) == 5):
-        #     if row.startswith('    '):
-        #         continue
-        #     for i in range(5):
-        #         cleaned_row_new += cleaned_row[i]
-        #     cleaned_data_to_use.append(cleaned_row_new)
-        # elif(len(cleaned_row) == 3):
-        #     for i in range(3):
-        #         if i == 2:
-        #             cleaned_row_new += ''                
-        #         elif i == 3:
-        #             cleaned_row_new += ''
-        #         else:
-        #             cleaned_row_new += cleaned_row_new
-        #         cleaned_row_new += cleaned_row[i]
-        cleaned_data_to_use.append(cleaned_row)
+        cleaned_row_new = []
+        if(len(cleaned_row) == 5):
+            for i in range(5):
+                cleaned_row_new.append (cleaned_row[i])
+            cleaned_data_to_use.append(cleaned_row_new)
+        elif(len(cleaned_row) == 3):
+            for i in range(3):
+                if i == 2:
+                    cleaned_row_new.append('')              
+                if i == 3:
+                    cleaned_row_new.append('') 
+                else:
+                    cleaned_row_new.append (cleaned_row[i])
+            cleaned_data_to_use.append(cleaned_row_new)
+
     return cleaned_data_to_use
